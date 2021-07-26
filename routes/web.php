@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/chat', function () {
     return view('chat');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/tasks', function () {
+    return view('tasks');
+});
