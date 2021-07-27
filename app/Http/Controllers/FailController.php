@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Fail;
 use Illuminate\Http\Request;
 
+
 class FailController extends Controller
 {
     /**
@@ -33,9 +34,23 @@ class FailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
         //
+        $fileModel = new Fail;
+
+        if($req->file()) {
+            $fileName = time().'_'.$req->file->getClientOriginalName();
+            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+
+            $fileModel->nama = time().'_'.$req->file->getClientOriginalName();
+            $fileModel->laluan_fail = '/report/' . $filePath;
+            $fileModel->save();
+
+            return back()
+            ->with('success','File has been uploaded.')
+            ->with('file', $fileName);
+        }
     }
 
     /**

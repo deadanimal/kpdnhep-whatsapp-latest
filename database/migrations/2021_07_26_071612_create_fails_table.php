@@ -15,6 +15,8 @@ class CreateFailsTable extends Migration
     {
         Schema::create('fails', function (Blueprint $table) {
             $table->id();
+            $table->string('nama')->nullable();
+            $table->string('laluan_fail')->nullable();
             $table->timestamps();
         });
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,13 @@ Route::get('/dashboard', function () {
 Route::get('/tasks', function () {
     return view('tasks');
 });
+
+Route::get('/report', function () {
+    return view('report');
+});
+
+Route::get('/testjap', function () {
+    return view('testjap');
+});
+
+Route::resource('fails', FailController::class);
