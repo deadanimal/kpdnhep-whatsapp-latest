@@ -27,7 +27,7 @@
                         </form>
                     </div>
                 </div>
-                <h4 class="page-title">Tasks <a href="#" class="btn btn-success btn-sm ms-3">Add New</a></h4>
+                <h4 class="page-title">Tasks <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg">Add New</button></h4>
             </div>
             <!-- end page title -->
 
@@ -46,7 +46,7 @@
                             <div class="row justify-content-sm-between">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task1">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task1"> -->
                                         <label class="form-check-label" for="task1">
                                             Draft the new contract document for sales team
                                         </label>
@@ -82,7 +82,7 @@
                             <div class="row justify-content-sm-between mt-2">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task2">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task2"> -->
                                         <label class="form-check-label" for="task2">
                                             iOS App home page
                                         </label>
@@ -118,7 +118,7 @@
                             <div class="row justify-content-sm-between mt-2">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task3">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task3"> -->
                                         <label class="form-check-label" for="task3">
                                             Write a release note
                                         </label>
@@ -170,7 +170,7 @@
                             <div class="row justify-content-sm-between">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task4">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task4"> -->
                                         <label class="form-check-label" for="task4">
                                             Invite user to a project
                                         </label>
@@ -206,7 +206,7 @@
                             <div class="row justify-content-sm-between mt-2">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task5">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task5"> -->
                                         <label class="form-check-label" for="task5">
                                             Enable analytics tracking
                                         </label>
@@ -242,7 +242,7 @@
                             <div class="row justify-content-sm-between mt-2">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task6">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task6"> -->
                                         <label class="form-check-label" for="task6">
                                             Code HTML email template
                                         </label>
@@ -294,7 +294,7 @@
                             <div class="row justify-content-sm-between">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task7">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task7"> -->
                                         <label class="form-check-label" for="task7">
                                             Coordinate with business development
                                         </label>
@@ -330,7 +330,7 @@
                             <div class="row justify-content-sm-between mt-2">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task8">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task8"> -->
                                         <label class="form-check-label" for="task8">
                                             Kanban board design
                                         </label>
@@ -366,7 +366,7 @@
                             <div class="row justify-content-sm-between mt-2">
                                 <div class="col-sm-6 mb-2 mb-sm-0">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="task9">
+                                        <!-- <input type="checkbox" class="form-check-input" id="task9"> -->
                                         <label class="form-check-label" for="task9">
                                             Code HTML email template for sales outreach
                                         </label>
@@ -481,136 +481,72 @@
                                 <div class="col">
                                     <div class="border rounded">
                                         <div id="bubble-editor" style="height: 130px;">
-                                            <h3>This is an simple editable area.</h3>
+                                            <h3>This is the tajuk.</h3>
                                             <p><br></p>
-                                            <ul>
-                                                <li>
-                                                    Select a text to reveal the toolbar.
-                                                </li>
-                                                <li>
-                                                    Edit rich document on-the-fly, so elastic!
-                                                </li>
-                                            </ul>
+                                            Here will be the penerangan.
                                             <p><br></p>
-                                            <p>
-                                                End of simple area
-                                            </p>
                                         </div> <!-- end Snow-editor-->
                                     </div>
                                 </div> <!-- end col -->
                             </div>
                             <!-- end task description -->
 
-                            <!-- start sub tasks/checklists -->
-                            <h5 class="mt-4 mb-2 font-16">Checklists/Sub-tasks</h5>
-                            <div class="form-check mt-1">
-                                <input type="checkbox" class="form-check-input" id="checklist1">
-                                <label class="form-check-label strikethrough" for="checklist1">
-                                    Find out the old contract documents
-                                </label>
-                            </div>
-
-                            <div class="form-check mt-1">
-                                <input type="checkbox" class="form-check-input" id="checklist2">
-                                <label class="form-check-label strikethrough" for="checklist2">
-                                    Organize meeting sales associates to understand need in detail
-                                </label>
-                            </div>
-
-                            <div class="form-check mt-1">
-                                <input type="checkbox" class="form-check-input" id="checklist3">
-                                <label class="form-check-label strikethrough" for="checklist3">
-                                    Make sure to cover every small details
-                                </label>
-                            </div>
-                            <!-- end sub tasks/checklists -->
-
-                            <!-- start attachments -->
-                            <h5 class="mt-4 mb-2 font-16">Attachments</h5>
-                            <div class="card mb-2 shadow-none border">
-                                <div class="p-1">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="avatar-sm">
-                                                <span class="avatar-title rounded">
-                                                    .ZIP
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="col ps-0">
-                                            <a href="javascript:void(0);" class="text-muted fw-bold">sales-assets.zip</a>
-                                            <p class="mb-0">2.3 MB</p>
-                                        </div>
-                                        <div class="col-auto" id="tooltip-container9">
-                                            <!-- Button -->
-                                            <a href="javascript:void(0);" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download" class="btn btn-link text-muted btn-lg p-0">
-                                                <i class='uil uil-cloud-download'></i>
-                                            </a>
-                                            <a href="javascript:void(0);" data-bs-container="#tooltip-container9" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" class="btn btn-link text-danger btn-lg p-0">
-                                                <i class='uil uil-multiply'></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card mb-2 shadow-none border">
-                                <div class="p-1">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <img src="/images/projects/project-1.jpg" class="avatar-sm rounded" alt="file-image">
-                                        </div>
-                                        <div class="col ps-0">
-                                            <a href="javascript:void(0);" class="text-muted fw-bold">new-contarcts.docx</a>
-                                            <p class="mb-0">1.25 MB</p>
-                                        </div>
-                                        <div class="col-auto" id="tooltip-container10">
-                                            <!-- Button -->
-                                            <a href="javascript:void(0);" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Download" class="btn btn-link text-muted btn-lg p-0">
-                                                <i class='uil uil-cloud-download'></i>
-                                            </a>
-                                            <a href="javascript:void(0);" data-bs-container="#tooltip-container10" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete" class="btn btn-link text-danger btn-lg p-0">
-                                                <i class='uil uil-multiply'></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end attachments -->
-
                             <!-- comments -->
                             <div class="row mt-3">
                                 <div class="col">
                                     <h5 class="mb-2 font-16">Comments</h5>
 
-                                    <div class="d-flex mt-3 p-1">
-                                        <img src="/images/users/avatar-9.jpg" class="me-2 rounded-circle" height="36" alt="Arya Stark" />
-                                        <div class="w-100">
-                                            <h5 class="mt-0 mb-0">
-                                                <span class="float-end text-muted font-12">4:30am</span>
-                                                Arya Stark
-                                            </h5>
-                                            <p class="mt-1 mb-0 text-muted">
-                                                Should I review the last 3 years legal documents as well?
-                                            </p>
-                                        </div>
-                                    </div> <!-- end comment -->
+                                    <div data-simplebar style="max-height: 300px">
+                                        <a href="javascript:void(0);" class="text-body">
+                                            <div class="d-flex mt-3 p-1">
+                                                <img src="/images/users/avatar-9.jpg" class="me-2 rounded-circle" height="36" alt="Arya Stark" />
+                                                <div class="w-100">
+                                                    <h5 class="mt-0 mb-0">
+                                                        <span class="float-end text-muted font-12">4:30am</span>
+                                                        Arya Stark
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        Should I review the last 3 years legal documents as well?
+                                                    </p>
+                                                </div>
+                                            </div>
 
-                                    <hr />
+                                            <hr />
 
-                                    <div class="d-flex mt-2 p-1">
-                                        <img src="/images/users/avatar-5.jpg" class="me-2 rounded-circle" height="36" alt="Dominc B" />
-                                        <div class="w-100">
-                                            <h5 class="mt-0 mb-0">
-                                                <span class="float-end text-muted font-12">3:30am</span>
-                                                Gary Somya
-                                            </h5>
-                                            <p class="mt-1 mb-0 text-muted">
-                                                @Arya FYI..I have created some general guidelines last year.
-                                            </p>
-                                        </div>
-                                    </div> <!-- end comment-->
+                                            <div class="d-flex mt-2 p-1">
+                                                <img src="/images/users/avatar-5.jpg" class="me-2 rounded-circle" height="36" alt="Dominc B" />
+                                                <div class="w-100">
+                                                    <h5 class="mt-0 mb-0">
+                                                        <span class="float-end text-muted font-12">3:30am</span>
+                                                        Gary Somya
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        @Arya FYI..I have created some general guidelines last year.
+                                                    </p>
+                                                </div>
+                                            </div> <!-- end comment-->
 
-                                    <hr />
+                                            <hr />
+
+                                            <div class="d-flex mt-2 p-1">
+                                                <img src="/images/users/avatar-2.jpg" class="me-2 rounded-circle" height="36" alt="Dominc B" />
+                                                <div class="w-100">
+                                                    <h5 class="mt-0 mb-0">
+                                                        <span class="float-end text-muted font-12">3:30am</span>
+                                                        James Brandon
+                                                    </h5>
+                                                    <p class="mt-1 mb-0 text-muted">
+                                                        @Gary FYI..I haven't created some general guidelines yet.
+                                                    </p>
+                                                </div>
+                                            </div> <!-- end comment-->
+
+                                            <hr />
+                                        </a>
+                                    </div>
+                                    <!-- end comment -->
+
+
 
                                 </div> <!-- end col -->
                             </div> <!-- end row -->
@@ -641,5 +577,93 @@
         </div> <!-- end col -->
     </div>
     <!-- end row-->
+
+    <div class="tab-content">
+        <div class="tab-pane show active" id="bs-modals-preview">
+            <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myLargeModalLabel">New Task</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="my-3 mx-3">
+                                <!-- 1st row -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="tajuk" class="form-label">Title</label>
+                                            <input type="text" id="tajuk" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="pekerja" class="form-label">Assigned to</label>
+                                            <select class="form-select" id="pekerja">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 2nd -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="penerangan" class="form-label">Task description</label>
+                                            <textarea class="form-control" id="penerangan" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="tarikh" class="form-label">Date</label>
+                                            <input class="form-control" id="tarikh" type="date" name="tarikh">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3rd -->
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="tahap" class="form-label">Level</label>
+                                            <div class="mt-2">
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" id="tinggi" name="tahap" class="form-check-input">
+                                                    <label class="form-check-label" for="tinggi">High</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" id="biasa" name="tahap" class="form-check-input">
+                                                    <label class="form-check-label" for="biasa">Medium</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input type="radio" id="rendah" name="tahap" class="form-check-input">
+                                                    <label class="form-check-label" for="rendah">Low</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <div class="row d-flex justify-content-end">
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
 </div>
 @stop

@@ -438,7 +438,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            <script>document.write(new Date().getFullYear())</script> © Hyper - Coderthemes.com
+                            <script>document.write(new Date().getFullYear())</script> © KPDNHEP - Pipeline Network
                         </div>
                         <div class="col-md-6">
                             <div class="text-md-end footer-links d-none d-md-block">
@@ -464,6 +464,7 @@
     <script defer="defer" src="{{ asset('js-sass/dashboardProjects.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/taskApp.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/fileUploadForm.js')}}"></script>
+    
 </body>
 
 </html>
