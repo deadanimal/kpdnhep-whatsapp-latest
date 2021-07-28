@@ -21,6 +21,8 @@
     <link href="{{ asset('css-sass/app-dark.css')}}" rel="stylesheet" type="text/css" id="dark-style" />
     <link href="{{ asset('css-sass/dashboardAnalytics.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css-sass/taskApp.css')}}" rel="stylesheet" type="text/css" id="light-style" />
+    <link href="{{ asset('css/vendor/select.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
 
     <title>Whatsapp KPDNHEP</title>
@@ -464,6 +466,7 @@
     <script defer="defer" src="{{ asset('js-sass/dashboardProjects.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/taskApp.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/fileUploadForm.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     
 </body>
 

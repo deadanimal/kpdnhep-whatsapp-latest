@@ -26,9 +26,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/tasks', function () {
-    return view('tasks');
-});
+use App\Http\Controllers\TugasanController;
+Route::resource('tugasans', TugasanController::class); 
 
 Route::get('/report', function () {
     return view('report');
@@ -39,3 +38,6 @@ Route::get('/testjap', function () {
 });
 
 Route::resource('fails', FailController::class);
+
+// custom action
+Route::get('/tugasan_delete/{id}', [TugasanController::class, 'tugasan_delete']);
