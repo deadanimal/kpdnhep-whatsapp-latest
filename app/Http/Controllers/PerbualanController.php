@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Perbualan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+
+use NotificationChannels\Messagebird\MessagebirdChannel;
+use NotificationChannels\Messagebird\MessagebirdMessage;
+use Illuminate\Notifications\Notification;
 
 class PerbualanController extends Controller
 {
@@ -15,6 +21,11 @@ class PerbualanController extends Controller
     public function index()
     {
         //
+        $perbualans = Perbualan::all();
+
+        return view('perbualans', [
+            'perbualans' => $perbualans,
+        ]);
     }
 
     /**
@@ -47,6 +58,9 @@ class PerbualanController extends Controller
     public function show(Perbualan $perbualan)
     {
         //
+        return view('perbualans', [
+            'perbualan' => $perbualan
+        ]);
     }
 
     /**
@@ -81,5 +95,38 @@ class PerbualanController extends Controller
     public function destroy(Perbualan $perbualan)
     {
         //
+    }
+
+    // whatsapp api
+    public function message(Request $request)
+    {
+
+        // require(__DIR__ . '/../../autoload.php');
+
+        $messageBird = new \MessageBird\Client('KEEgBIjS639LUBnlrFE5ehlij'); // Set your own API access key here.
+
+        // Enable the whatsapp sandbox feature
+        $messageBird = new \MessageBird\Client(
+            'KEEgBIjS639LUBnlrFE5ehlij',
+            null,
+            [\MessageBird\Client::ENABLE_CONVERSATIONSAPI_WHATSAPP_SANDBOX]
+        );
+
+        $conversationId = '2e15efafec384e1c82e9842075e87beb';
+
+        $content = new \MessageBird\Objects\Conversation\Content();
+        $content->text = 'test';
+
+        $message = new \MessageBird\Objects\Conversation\Message();
+        $message->channelId = 'fe33252e89774ebbafa6409b5c3a4c9e';
+        $message->type = 'text';
+        $message->content = $content;
+
+        try {
+            $conversation = $messageBird->conversationMessages->create($conversationId, $message);
+            var_dump($conversation);
+        } catch (\Exception $e) {
+            echo sprintf("%s: %s", get_class($e), $e->getMessage());
+        }
     }
 }

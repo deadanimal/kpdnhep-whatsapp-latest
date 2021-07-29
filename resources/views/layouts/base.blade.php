@@ -69,7 +69,7 @@
 
 
                     <li class="side-nav-item">
-                        <a href="/dashboard" class="side-nav-link">
+                        <a href="/" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Dashboard </span>
                         </a>
@@ -102,14 +102,14 @@
                     <li class="side-nav-title side-nav-item">Apps</li>
 
                     <li class="side-nav-item">
-                        <a href="/chat" class="side-nav-link">
+                        <a href="/perbualans" class="side-nav-link">
                             <i class="uil-comments-alt"></i>
                             <span> Chat </span>
                         </a>
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="/tasks" class="side-nav-link">
+                        <a href="/tugasans" class="side-nav-link">
                             <i class="uil-clipboard-alt"></i>
                             <span> Tasks </span>
                         </a>

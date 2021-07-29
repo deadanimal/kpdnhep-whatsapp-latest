@@ -15,16 +15,15 @@ use App\Http\Controllers\FailController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/chat', function () {
-    return view('chat');
-});
-
-Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+use App\Http\Controllers\PerbualanController;
+Route::resource('perbualans', PerbualanController::class);
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
 use App\Http\Controllers\TugasanController;
 Route::resource('tugasans', TugasanController::class); 
@@ -41,3 +40,5 @@ Route::resource('fails', FailController::class);
 
 // custom action
 Route::get('/tugasan_delete/{id}', [TugasanController::class, 'tugasan_delete']);
+
+Route::post('/message', [PerbualanController::class, 'message']);

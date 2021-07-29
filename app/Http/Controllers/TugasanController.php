@@ -63,7 +63,7 @@ class TugasanController extends Controller
     public function show(Tugasan $tugasan)
     {
         //
-        return view('tugasans.index',[
+        return view('tugasans',[
             'tugasan'=>$tugasan
         ]);
     }
