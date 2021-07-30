@@ -36,7 +36,7 @@ class FailController extends Controller
      */
     public function store(Request $req)
     {
-        //
+        // this is store function for file
         $fileModel = new Fail;
 
         if($req->file()) {
