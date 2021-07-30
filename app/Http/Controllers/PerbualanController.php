@@ -101,21 +101,21 @@ class PerbualanController extends Controller
     public function message(Request $request)
     {
 
-        // require(__DIR__ . '/../../autoload.php');
+        // require('autoload.php');
 
-        $messageBird = new \MessageBird\Client('KEEgBIjS639LUBnlrFE5ehlij'); // Set your own API access key here.
+        $messageBird = new \MessageBird\Client('AH6T3UbqhPur94egxFqKmjsOk'); // Set your own API access key here.
 
         // Enable the whatsapp sandbox feature
         $messageBird = new \MessageBird\Client(
-            'KEEgBIjS639LUBnlrFE5ehlij',
-            null,
-            [\MessageBird\Client::ENABLE_CONVERSATIONSAPI_WHATSAPP_SANDBOX]
+           'AH6T3UbqhPur94egxFqKmjsOk',
+           null,
+           [\MessageBird\Client::ENABLE_CONVERSATIONSAPI_WHATSAPP_SANDBOX]
         );
 
         $conversationId = '2e15efafec384e1c82e9842075e87beb';
 
         $content = new \MessageBird\Objects\Conversation\Content();
-        $content->text = 'test';
+        $content->text = $request->text;
 
         $message = new \MessageBird\Objects\Conversation\Message();
         $message->channelId = 'fe33252e89774ebbafa6409b5c3a4c9e';

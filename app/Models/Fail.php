@@ -10,6 +10,8 @@ class Fail extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
-        'laluan_fail'
+        'laluan_fail',
+        'saiz',
+        'pemilik'
     ];
 }

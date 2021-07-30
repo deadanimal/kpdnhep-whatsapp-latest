@@ -64,8 +64,18 @@
                                     <td>{{$tugasan->kerja}}</td>
                                     <td>{{$tugasan->tarikh}}</td>
                                     <td>{{$tugasan->tahap}}</td>
-                                    <td>{{$tugasan->status}}</td>
-                                    <td><a href="/tugasan_delete/{{$tugasan->id}}" class="action-icon"> <i class="mdi mdi-delete"></i></a></td>
+                                    <td>
+                                        @if ($tugasan->status == "Done")
+                                        <span class="badge bg-success">Done</span>
+                                        @else
+                                        <span class="badge bg-danger">Underdone</span>
+                                        @endif
+                                        <!-- {{$tugasan->status}} -->
+                                    </td>
+                                    <td>
+                                        <a href="/tugasan_delete/{{$tugasan->id}}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                        <a href="/hantar/{{$tugasan->id}}" class="action-icon"> <i class="uil uil-arrow-circle-right"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -88,14 +98,6 @@
                             <a href="javascript:void(0);" class="dropdown-item">
                                 <i class='uil uil-file-upload me-1'></i>Attachment
                             </a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class='uil uil-edit me-1'></i>Edit
-                            </a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class='uil uil-file-copy-alt me-1'></i>Mark as Duplicate
-                            </a>
                             <div class="dropdown-divider"></div>
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item text-danger">
@@ -104,29 +106,43 @@
                         </div> <!-- end dropdown menu-->
                     </div> <!-- end dropdown-->
 
-                    <div class="form-check float-start">
-                        <input type="checkbox" class="form-check-input" id="completedCheck">
-                        <label class="form-check-label" for="completedCheck">
-                            Mark as completed
-                        </label>
-                    </div> <!-- end forms-check-->
+                    <form action="/semak/{{$tugasan_selected->id}}" method="POST">
+                        @csrf
+                        @if ($tugasan_selected->status == "Done")
+                        <div class="form-check ">
+                            <input type="checkbox" class="form-check-input" id="completedCheck" name="status" value="Done" checked>
+                            <label class="form-check-label" for="completedCheck">
+                                Mark as completed
+                            </label>
+                        </div>
+                        @else
+                        <div class="form-check ">
+                            <input type="checkbox" class="form-check-input" id="completedCheck" name="status" value="Done">
+                            <label class="form-check-label" for="completedCheck">
+                                Mark as completed
+                            </label>
+                        </div>
+                        @endif
+                        
+                        <button class="btn btn-primary btn-sm float-start" type="submit">Confirm</button>
+                    </form>
+                    <!-- end forms-check-->
 
                     <hr class="mt-4 mb-2" />
 
                     <div class="row">
                         <div class="col">
 
-                            <h4>Draft the new contract document for sales team</h4>
+                            <h4>{{$tugasan_selected->tajuk}}</h4>
 
                             <div class="row">
                                 <div class="col-6">
                                     <!-- assignee -->
                                     <p class="mt-2 mb-1 text-muted">Assigned To</p>
                                     <div class="d-flex">
-                                        <img src="/images/users/avatar-9.jpg" alt="Arya S" class="rounded-circle me-2" height="24" />
                                         <div>
                                             <h5 class="mt-1 font-14">
-                                                Arya Stark
+                                                {{$tugasan_selected->petugas}}
                                             </h5>
                                         </div>
                                     </div>
@@ -140,7 +156,7 @@
                                         <i class='uil uil-schedule font-18 text-success me-1'></i>
                                         <div>
                                             <h5 class="mt-1 font-14">
-                                                Today 10am
+                                                {{$tugasan_selected->tarikh}}
                                             </h5>
                                         </div>
                                     </div>
@@ -153,9 +169,9 @@
                                 <div class="col">
                                     <div class="border rounded">
                                         <div id="bubble-editor" style="height: 130px;">
-                                            <h3>This is the tajuk.</h3>
+                                            <h3>{{$tugasan_selected->tajuk}}</h3>
                                             <p><br></p>
-                                            Here will be the penerangan.
+                                            {{$tugasan_selected->kerja}}
                                             <p><br></p>
                                         </div> <!-- end Snow-editor-->
                                     </div>

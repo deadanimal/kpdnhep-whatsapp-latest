@@ -16,9 +16,12 @@ class TugasanController extends Controller
     {
         //
         $tugasans = Tugasan::all();
+        $id = 3;
+        $tugasan_selected = Tugasan::where("id", $id)->first();
 
         return view('tugasans',[
-            'tugasans'=>$tugasans
+            'tugasans'=>$tugasans,
+            'tugasan_selected'=>$tugasan_selected,
         ]);
     }
 
@@ -48,7 +51,7 @@ class TugasanController extends Controller
         $tugasan->kerja = $request->kerja;
         $tugasan->tarikh = $request->tarikh;
         $tugasan->tahap = $request->tahap;
-        $tugasan->status = "belum";
+        $tugasan->status = "Underdone";
 
         $tugasan->save();
         return redirect('/tugasans/');
@@ -114,6 +117,33 @@ class TugasanController extends Controller
     public function tugasan_delete($id)
     {
         Tugasan::where("id", $id)->delete();
+        return redirect('/tugasans/');
+    }
+
+    public function hantar($id)
+    {
+        $tugasans = Tugasan::all();
+        $tugasan_selected = Tugasan::where("id", $id)->first();
+
+        return view('tugasans',[
+            'tugasans'=>$tugasans,
+            'tugasan_selected'=>$tugasan_selected,
+        ]);
+    }
+
+    public function semak(Request $request, $id)
+    {
+        // Tugasan::where("id", $id);
+        // $tugasans = Tugasan::all();
+        $tugas = Tugasan::where("id", $id);
+        if ($request->status == null)
+        {
+            $tugas->update(['status' => 'Underdone']);
+            return redirect('/tugasans/');
+        }
+        // dd($request->status);
+        $tugas->update(['status' => $request->status]);
+
         return redirect('/tugasans/');
     }
 }

@@ -42,7 +42,8 @@ class FailController extends Controller
         if($req->file()) {
             $fileName = time().'_'.$req->file->getClientOriginalName();
             $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
-
+            
+            $fileModel->saiz = $req->file('file')->getSize();
             $fileModel->nama = time().'_'.$req->file->getClientOriginalName();
             $fileModel->laluan_fail = '/report/' . $filePath;
             $fileModel->save();

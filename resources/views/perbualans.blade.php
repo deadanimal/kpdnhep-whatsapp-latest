@@ -459,29 +459,6 @@
                                         test
                                     </p>
                                 </div>
-                                <div class="card mt-2 mb-1 shadow-none border text-start">
-                                    <div class="p-2">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <div class="avatar-sm">
-                                                    <span class="avatar-title rounded">
-                                                        .ZIP
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col ps-0">
-                                                <a href="javascript:void(0);" class="text-muted fw-bold">Hyper-admin-design.zip</a>
-                                                <p class="mb-0">2.3 MB</p>
-                                            </div>
-                                            <div class="col-auto">
-
-                                                <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
-                                                    <i class="dripicons-download"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <div class="conversation-actions dropdown">
                                 <button class="btn btn-sm btn-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="uil uil-ellipsis-v"></i></button>
@@ -498,77 +475,80 @@
                     <div class="row">
                         <div class="col">
                             <div class="mt-2 bg-light p-3 rounded">
-                                <form class="needs-validation" novalidate="" name="chat-form" id="chat-form">
-                                    <div class="row">
-                                        <div class="col mb-2 mb-sm-0">
-                                            <input type="text" class="form-control border-0" placeholder="Enter your text" required="">
-                                            <div class="invalid-feedback">
-                                                Please enter your messsage
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-auto">
-                                            <div class="btn-group">
-                                                <a class="btn btn-light" data-bs-toggle="modal" data-bs-target="#hantar-fail"><i class="uil uil-paperclip"></i></a>
-                                                <a href="#" class="btn btn-light"> <i class="uil uil-smile"></i> </a>
-                                                <div class="d-grid">
-                                                    <button type="submit" class="btn btn-success chat-send">
-                                                        <i class="uil uil-message"></i></button>
+                                <form action="/message" method="POST" class="needs-validation" novalidate="" name="chat-form" id="chat-form">
+                                    <!-- <form action="/message" method="POST"> -->
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col mb-2 mb-sm-0">
+                                                <input type="text" class="form-control border-0" placeholder="Enter your text" name="text">
+                                                <div class="invalid-feedback">
+                                                    Please enter your messsage
                                                 </div>
                                             </div>
-                                            <div id="hantar-fail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="standard-modalLabel">Send files</h4>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
-                                                                <div class="fallback">
-                                                                    <input name="file" type="file" multiple />
-                                                                </div>
+                                            <div class="col-sm-auto">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-light" data-bs-toggle="modal" data-bs-target="#hantar-fail"><i class="uil uil-paperclip"></i></a>
+                                                    <a href="#" class="btn btn-light"> <i class="uil uil-smile"></i> </a>
+                                                    <div class="d-grid">
+                                                        <button type="submit" class="btn btn-success chat-send">
+                                                            <i class="uil uil-message"></i></button>
+                                                    </div>
+                                                </div>
+                                                <div id="hantar-fail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="standard-modalLabel">Send files</h4>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+                                                                    <div class="fallback">
+                                                                        <input name="file" type="file" multiple />
+                                                                    </div>
 
-                                                                <div class="dz-message needsclick">
-                                                                    <i class="h1 text-muted dripicons-cloud-upload"></i>
-                                                                    <!-- <h3>Drop files here or click to upload.</h3> -->
-                                                                </div>
-                                                            </form>
+                                                                    <div class="dz-message needsclick">
+                                                                        <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                                                        <!-- <h3>Drop files here or click to upload.</h3> -->
+                                                                    </div>
+                                                                </form>
 
-                                                            <!-- Preview -->
-                                                            <div class="dropzone-previews mt-3" id="file-previews"></div>
+                                                                <!-- Preview -->
+                                                                <div class="dropzone-previews mt-3" id="file-previews"></div>
 
-                                                            <!-- file preview template -->
-                                                            <div class="d-none" id="uploadPreviewTemplate">
-                                                                <div class="card mt-1 mb-0 shadow-none border">
-                                                                    <div class="p-2">
-                                                                        <div class="row align-items-center">
-                                                                            <div class="col-auto">
-                                                                                <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-                                                                            </div>
-                                                                            <div class="col ps-0">
-                                                                                <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
-                                                                                <p class="mb-0" data-dz-size></p>
-                                                                            </div>
-                                                                            <div class="col-auto">
-                                                                                <!-- Button -->
-                                                                                <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                                                                                    <i class="dripicons-cross"></i>
-                                                                                </a>
+                                                                <!-- file preview template -->
+                                                                <div class="d-none" id="uploadPreviewTemplate">
+                                                                    <div class="card mt-1 mb-0 shadow-none border">
+                                                                        <div class="p-2">
+                                                                            <div class="row align-items-center">
+                                                                                <div class="col-auto">
+                                                                                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                                                                </div>
+                                                                                <div class="col ps-0">
+                                                                                    <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
+                                                                                    <p class="mb-0" data-dz-size></p>
+                                                                                </div>
+                                                                                <div class="col-auto">
+                                                                                    <!-- Button -->
+                                                                                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
+                                                                                        <i class="dripicons-cross"></i>
+                                                                                    </a>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary">Send</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Send</button>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    <!-- </form> -->
                                 </form>
                             </div>
                         </div>
@@ -580,14 +560,14 @@
 
     </div>
 
-    <form method="POST" action="/message">
-    @csrf
+    <!-- <form method="POST" action="/message">
+        @csrf
         <div class="mb-3">
             <label for="kerja" class="form-label">Task description</label>
             <textarea class="form-control" name="kerja" rows="5"></textarea>
         </div>
         <button type="submit">try</button>
-    </form>
+    </form> -->
 
 </div>
 @stop

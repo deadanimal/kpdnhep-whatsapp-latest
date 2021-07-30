@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Laporan extends Model
 {
     use HasFactory;
+    public function fails()
+    {
+        return $this->hasMany(Fail::class);
+    }
 }

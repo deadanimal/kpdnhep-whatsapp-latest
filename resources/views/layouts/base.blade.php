@@ -8,7 +8,9 @@
     <meta content="Coderthemes" name="author" />
 
     <!--TODO: changes-->
-    <link href="{{ asset('css-sass/icons.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/icons/_dripicons.scss')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/icons/_materialdesignicons.scss')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('plugins/icons/_unicons.scss')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css-sass/app.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css-sass/advancedForm.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css-sass/brite.css')}}" rel="stylesheet" type="text/css" id="light-style" />
@@ -18,7 +20,6 @@
     <link href="{{ asset('css-sass/gridDataTable.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css-sass/projectApp.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css-sass/vectorMap.css')}}" rel="stylesheet" type="text/css" id="light-style" />
-    <link href="{{ asset('css-sass/app-dark.css')}}" rel="stylesheet" type="text/css" id="dark-style" />
     <link href="{{ asset('css-sass/dashboardAnalytics.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css-sass/taskApp.css')}}" rel="stylesheet" type="text/css" id="light-style" />
     <link href="{{ asset('css/vendor/select.bootstrap5.css')}}" rel="stylesheet" type="text/css" />
@@ -116,7 +117,7 @@
                     </li>
 
                     <li class="side-nav-item">
-                        <a href="/report" class="side-nav-link">
+                        <a href="/laporans" class="side-nav-link">
                             <i class="uil-folder-plus"></i>
                             <span> Reports </span>
                         </a>
@@ -466,7 +467,7 @@
     <script defer="defer" src="{{ asset('js-sass/dashboardProjects.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/taskApp.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/fileUploadForm.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     
 </body>
 
