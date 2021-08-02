@@ -39,10 +39,10 @@
                 <span class="logo-lg">
                     <div class="row mt-3">
                         <div class="col-4 d-flex justify-content-end">
-                        <img class="text-end" src="{{ asset('images/kpdnhep-logo.jpg')}}" alt="" height="16">
+                            <img class="text-end" src="{{ asset('images/kpdnhep-logo.jpg')}}" alt="" height="16">
                         </div>
                         <div class="col-8 d-flex justify-content-start">
-                        <h5 class="text-white mt-0 pt-0">KPDNHEP</h5>
+                            <h5 class="text-white mt-0 pt-0">KPDNHEP</h5>
                         </div>
                     </div>
                 </span>
@@ -70,7 +70,7 @@
 
 
                     <li class="side-nav-item">
-                        <a href="/" class="side-nav-link">
+                        <a href="/dashboard" class="side-nav-link">
                             <i class="uil-home-alt"></i>
                             <span> Dashboard </span>
                         </a>
@@ -323,8 +323,8 @@
                                     <img src="../images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                                 </span>
                                 <span>
-                                    <span class="account-user-name">Dominic Keller</span>
-                                    <span class="account-position">Founder</span>
+                                    <span class="account-user-name">{{ Auth::user()->name }}</span>
+                                    <span class="account-position">{{ Auth::user()->email }}</span>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -357,11 +357,14 @@
                                     <span>Lock Screen</span>
                                 </a>
 
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-logout me-1"></i>
-                                    <span>Logout</span>
-                                </a>
+                                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();" class="dropdown-item notify-item"><i class="mdi mdi-logout me-1"></i>
+                                        {{ __('Log Out') }}
+                                    </x-responsive-nav-link>
+                                </form>
                             </div>
                         </li>
 
@@ -441,7 +444,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            <script>document.write(new Date().getFullYear())</script> © KPDNHEP - Pipeline Network
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script> © KPDNHEP - Pipeline Network
                         </div>
                         <div class="col-md-6">
                             <div class="text-md-end footer-links d-none d-md-block">
@@ -468,7 +473,7 @@
     <script defer="defer" src="{{ asset('js-sass/taskApp.js')}}"></script>
     <script defer="defer" src="{{ asset('js-sass/fileUploadForm.js')}}"></script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    
+
 </body>
 
 </html>

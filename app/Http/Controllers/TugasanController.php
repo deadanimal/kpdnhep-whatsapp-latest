@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tugasan;
+use App\Models\Komen;
 use Illuminate\Http\Request;
 
 class TugasanController extends Controller
@@ -18,10 +19,12 @@ class TugasanController extends Controller
         $tugasans = Tugasan::all();
         $id = 3;
         $tugasan_selected = Tugasan::where("id", $id)->first();
+        $komen = Komen::all();
 
         return view('tugasans',[
             'tugasans'=>$tugasans,
             'tugasan_selected'=>$tugasan_selected,
+            'komen'=>$komen,
         ]);
     }
 

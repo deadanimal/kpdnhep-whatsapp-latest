@@ -101,7 +101,7 @@ class PerbualanController extends Controller
     public function message(Request $request)
     {
 
-        // require('autoload.php');
+        
 
         $messageBird = new \MessageBird\Client('AH6T3UbqhPur94egxFqKmjsOk'); // Set your own API access key here.
 
