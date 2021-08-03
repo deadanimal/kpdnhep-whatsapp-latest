@@ -17,7 +17,7 @@ class CreateFailsTable extends Migration
             $table->id();
             $table->string('nama')->nullable();
             $table->string('laluan_fail')->nullable();
-            $table->string('saiz')->nullable();
+            $table->integer('saiz')->nullable();
             $table->string('pemilik')->nullable();
 
             $table->foreignId('laporan_id');

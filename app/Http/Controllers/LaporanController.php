@@ -118,6 +118,8 @@ class LaporanController extends Controller
     public function laporan_delete($id)
     {
         Laporan::where("id", $id)->delete();
+        Fail::where("id", $id)->delete();
+
         return redirect('/laporans/');
     }
 
@@ -131,13 +133,20 @@ class LaporanController extends Controller
 
         $laporan->save();
 
+        $idlapor = $laporan->id;
         $fileModel = new Fail;
 
         if($request->file()) {
             $fileName = time().'_'.$request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
 
+            $saiz = $request->file('file')->getSize();
+            $saiz = $saiz/1000;
+            
+            $fileModel->saiz = $saiz;
             $fileModel->nama = time().'_'.$request->file->getClientOriginalName();
+            $fileModel->laporan_id = $idlapor;
+            $fileModel->pemilik = $request->user();
             $fileModel->laluan_fail = '/laporans/' . $filePath;
             $fileModel->save();
         }

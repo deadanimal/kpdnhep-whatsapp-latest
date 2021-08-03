@@ -185,50 +185,22 @@
 
                                     <div data-simplebar style="max-height: 300px">
                                         <a href="javascript:void(0);" class="text-body">
+                                        @foreach ($komens as $komen)
                                             <div class="d-flex mt-3 p-1">
                                                 <img src="/images/users/avatar-9.jpg" class="me-2 rounded-circle" height="36" alt="Arya Stark" />
                                                 <div class="w-100">
                                                     <h5 class="mt-0 mb-0">
-                                                        <span class="float-end text-muted font-12">4:30am</span>
-                                                        Arya Stark
+                                                        <span class="float-end text-muted font-12">{{$komen->timestamp}}</span>
+                                                        {{$komen->user_id}}
                                                     </h5>
                                                     <p class="mt-1 mb-0 text-muted">
-                                                        Should I review the last 3 years legal documents as well?
+                                                        {{$komen->isi}}
                                                     </p>
                                                 </div>
                                             </div>
 
-                                            <hr />
-
-                                            <div class="d-flex mt-2 p-1">
-                                                <img src="/images/users/avatar-5.jpg" class="me-2 rounded-circle" height="36" alt="Dominc B" />
-                                                <div class="w-100">
-                                                    <h5 class="mt-0 mb-0">
-                                                        <span class="float-end text-muted font-12">3:30am</span>
-                                                        Gary Somya
-                                                    </h5>
-                                                    <p class="mt-1 mb-0 text-muted">
-                                                        @Arya FYI..I have created some general guidelines last year.
-                                                    </p>
-                                                </div>
-                                            </div> <!-- end comment-->
-
-                                            <hr />
-
-                                            <div class="d-flex mt-2 p-1">
-                                                <img src="/images/users/avatar-2.jpg" class="me-2 rounded-circle" height="36" alt="Dominc B" />
-                                                <div class="w-100">
-                                                    <h5 class="mt-0 mb-0">
-                                                        <span class="float-end text-muted font-12">3:30am</span>
-                                                        James Brandon
-                                                    </h5>
-                                                    <p class="mt-1 mb-0 text-muted">
-                                                        @Gary FYI..I haven't created some general guidelines yet.
-                                                    </p>
-                                                </div>
-                                            </div> <!-- end comment-->
-
-                                            <hr />
+                                            <hr /> 
+                                        @endforeach<!-- end comment-->
                                         </a>
                                     </div>
                                     <!-- end comment -->
@@ -239,10 +211,11 @@
                             </div> <!-- end row -->
 
                             <div class="row mt-2">
+                            <form action="/komen" method="POST"></form>
                                 <div class="col">
                                     <div class="border rounded">
                                         <form action="#" class="comment-area-box">
-                                            <textarea rows="3" class="form-control border-0 resize-none" placeholder="Your comment..."></textarea>
+                                            <textarea rows="3" class="form-control border-0 resize-none" name="komen" placeholder="Your comment..."></textarea>
                                             <div class="p-2 bg-light">
                                                 <div class="text-end">
                                                     <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>

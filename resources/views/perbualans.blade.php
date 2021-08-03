@@ -60,7 +60,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <div data-simplebar style="max-height: 550px">
+                                    <div data-simplebar style="height: 550px">
                                         <a href="javascript:void(0);" class="text-body">
                                             <div class="d-flex align-items-start mt-1 p-2">
                                                 <img src="/images/users/avatar-2.jpg" class="me-2 rounded-circle" height="48" alt="Brandon Smith">
@@ -206,7 +206,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <div data-simplebar style="max-height: 550px">
+                                    <div data-simplebar style="height: 550px">
                                         <a href="javascript:void(0);" class="text-body">
                                             <div class="d-flex align-items-start mt-1 p-2">
                                                 <img src="/images/users/avatar-2.jpg" class="me-2 rounded-circle" height="48" alt="Brandon Smith">
@@ -292,7 +292,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <div data-simplebar style="max-height: 550px">
+                                    <div data-simplebar style="height: 550px">
                                         <a href="javascript:void(0);" class="text-body">
                                             <div class="d-flex align-items-start mt-1 p-2">
                                                 <img src="/images/users/avatar-2.jpg" class="me-2 rounded-circle" height="48" alt="Brandon Smith">
@@ -445,18 +445,14 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <ul class="conversation-list" data-simplebar style="max-height: 367px">
-
+                    <ul class="conversation-list" data-simplebar style="height: 367px">
+                    @foreach ($data as $message)
                         <li class="clearfix odd">
-                            <div class="chat-avatar">
-                                <img src="/images/users/avatar-1.jpg" alt="dominic" class="rounded">
-                                <i>10:05</i>
-                            </div>
                             <div class="conversation-text">
                                 <div class="ctext-wrap">
-                                    <i>Dominic</i>
+                                    <i>10:05 - Dominic</i>
                                     <p>
-                                        test
+                                        {{$message}}
                                     </p>
                                 </div>
                             </div>
@@ -470,6 +466,7 @@
                                 </div>
                             </div>
                         </li>
+                    @endforeach
                     </ul>
 
                     <div class="row">
@@ -559,12 +556,12 @@
         </div>
 
     </div>
-
-    <!-- <form method="POST" action="/message">
+<!-- 
+    <form method="POST" action="/message">
         @csrf
         <div class="mb-3">
-            <label for="kerja" class="form-label">Task description</label>
-            <textarea class="form-control" name="kerja" rows="5"></textarea>
+            <label for="sembang" class="form-label">Task description</label>
+            <textarea class="form-control" name="sembang" rows="5"></textarea>
         </div>
         <button type="submit">try</button>
     </form> -->
