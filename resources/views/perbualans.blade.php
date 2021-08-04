@@ -446,13 +446,14 @@
             <div class="card">
                 <div class="card-body">
                     <ul class="conversation-list" data-simplebar style="height: 367px">
-                    @foreach ($data as $message)
+                    @foreach ($try as $try)
+                    @if ($jenis == "sent")
                         <li class="clearfix odd">
                             <div class="conversation-text">
                                 <div class="ctext-wrap">
                                     <i>10:05 - Dominic</i>
                                     <p>
-                                        {{$message}}
+                                        {{$try}}
                                     </p>
                                 </div>
                             </div>
@@ -466,18 +467,40 @@
                                 </div>
                             </div>
                         </li>
+                    @else
+                        <li class="clearfix">
+                            <div class="conversation-text">
+                                <div class="ctext-wrap">
+                                    <i>Shreyu N - 10:01</i>
+                                    <p>
+                                        {{$try}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="conversation-actions dropdown">
+                                <button class="btn btn-sm btn-link" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class='uil uil-ellipsis-v'></i></button>
+
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="#">Copy Message</a>
+                                    <a class="dropdown-item" href="#">Edit</a>
+                                    <a class="dropdown-item" href="#">Delete</a>
+                                </div>
+                            </div>
+                        </li>
+                    @endif
                     @endforeach
                     </ul>
 
                     <div class="row">
                         <div class="col">
                             <div class="mt-2 bg-light p-3 rounded">
-                                <form action="/message" method="POST" class="needs-validation" novalidate="" name="chat-form" id="chat-form">
+                                <form action="/tingting" method="POST" class="needs-validation" novalidate="" name="chat-form" id="chat-form">
                                     <!-- <form action="/message" method="POST"> -->
                                         @csrf
                                         <div class="row">
                                             <div class="col mb-2 mb-sm-0">
-                                                <input type="text" class="form-control border-0" placeholder="Enter your text" name="text">
+                                                <input type="text" class="form-control border-0" placeholder="Enter your text" name="testsat">
                                                 <div class="invalid-feedback">
                                                     Please enter your messsage
                                                 </div>

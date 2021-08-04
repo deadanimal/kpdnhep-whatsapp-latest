@@ -21,50 +21,9 @@ class PerbualanController extends Controller
         $perbualans = Perbualan::all();
 
         $url = "https://whatsapp-sandbox.messagebird.com/v1/conversations/18c5c32d4762488dbe6ef19623a86302/messages";
-        $data = [
-            // "id"=> "18c5c32d4762488dbe6ef19623a86302",
-            // "contactId"=> "86fecc3b94ca4f53aff505c0d6ed762f",
-            // "contact"=> [
-            //     "id"=> "86fecc3b94ca4f53aff505c0d6ed762f",
-            //     "href"=> "",
-            //     "msisdn"=> 60122263479,
-            //     "displayName"=> "Najhan",
-            //     "firstName"=> "",
-            //     "lastName"=> "",
-            //     "customDetails"=> null,
-            //     "attributes"=> null,
-            //     "createdDatetime"=> "2021-07-28T08:49:38Z",
-            //     "updatedDatetime"=> "2021-07-28T08:49:38Z"
-            // ],
-            // "channels"=> [
-                
-            //     "id"=> "fe33252e89774ebbafa6409b5c3a4c9e",
-            //     "name"=> "Sandbox",
-            //     "platformId"=> "whatsapp",
-            //     "status"=> "active",
-            //     "createdDatetime"=> "2019-06-05T11:44:25Z",
-            //     "updatedDatetime"=> "2019-12-11T16:47:16Z"
-                
-            // ],
-            // "status"=> "active",
-            // "createdDatetime"=> "2021-07-28T08:49:38Z",
-            // "updatedDatetime"=> "2021-08-03T06:47:55.041245957Z",
-            // "lastReceivedDatetime"=> "2021-08-03T06:47:55.036704276Z",
-            // "lastUsedChannelId"=> "fe33252e89774ebbafa6409b5c3a4c9e",
-            // "messages"=> [
-            //     "totalCount"=> 114,
-            //     "href"=> "https://whatsapp-sandbox.messagebird.com//v1/conversations/18c5c32d4762488dbe6ef19623a86302/messages",
-            //     "lastMessageId"=> "9504eb26f8a54fab9aea384ded811072"
-            // ]
-        ];
 
-        $data = json_encode($data);
-
-        $headers = ["Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", "Accept" => "application/json"];
 
         $client = new \GuzzleHttp\Client();
-        #$response = $client->request('GET', $url, array('headers' => $headers, 'body' => $data));
-        // $response = $client->request('GET', $url, array('headers' => $headers));
 
         $response = Http::withHeaders([
             'Authorization' => "AccessKey AH6T3UbqhPur94egxFqKmjsOk",
@@ -72,14 +31,34 @@ class PerbualanController extends Controller
         ])->get($url);
 
         $data = $response->json();
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
-        // die();
+
+        extract($data);
+        extract($items);
+        $arrayLength = count($items);
+        $i = 0;
+        $try = array();
+        $jenis = array();
+        $campuq = array();
+        while ($i < $arrayLength) {
+            extract($items[$i]);
+            $jenis[] = $direction;
+            extract($content);
+            $try[] = $text;
+            // echo "$text\n";
+            $i++;
+        }
+
+        // print_r($try);
+        // extract($items[0]);
+        // extract($content);
+        // echo "$text";
+        // dd($data);
 
         return view('perbualans', [
             'perbualans' => $perbualans,
-            'data' => $data
+            'data' => $data,
+            'try' => $try,
+            'jenis' => $jenis,
         ]);
     }
 
@@ -173,7 +152,7 @@ class PerbualanController extends Controller
             "alamat rumah"
         ];
         $array = [];
-        foreach ($params as $key=>$value) {
+        foreach ($params as $key => $value) {
             array_push($array, (object) ['default' => $value]);
         }
         // $params = json_encode($array);
@@ -213,5 +192,89 @@ class PerbualanController extends Controller
         $data = $response->getBody();
 
         return view('perbualans');
+    }
+
+    public function hantaq(Request $request)
+    {
+        $testsat = $request->testsat;
+        $url = "https://conversations.messagebird.com/v1/conversations/2e15efafec384e1c82e9842075e87beb/messages";
+        $data = [
+            "type" => "text",
+            "content" => [
+                "text" => $testsat,
+            ]
+        ];
+
+        $data = json_encode($data);
+        // dd($data);
+
+        $headers = ["Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", "Accept" => "application/json"];
+
+        $response = Http::withHeaders([
+            "Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", 
+            "Accept" => "application/json"
+        ])->post($url, [
+            "type" => "text",
+            "content" => [
+                "text" => 'lol',
+            ]
+        ]);#$client->request('POST', $url, array('headers' => $headers, 'body' => $data));
+        
+        // dd($response);
+        $data = $response->getBody();
+
+        return view('perbualans');
+    }
+
+    public function tingting(Request $request){
+        $url = "https://conversations.messagebird.com/v1/send";
+        $testsat = $request->testsat;
+        $response = Http::withHeaders([
+            "Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", 
+            "Accept" => "application/json"
+        ])->post($url, [
+            "to"=>"+60122263479", 
+            "from"=>"fe33252e89774ebbafa6409b5c3a4c9e",
+            "type" => "text",
+            "content" => [
+                "text" => $testsat,
+            ]
+        ]);
+        $data = $response->json();
+        // dd($data);
+
+        $url = "https://whatsapp-sandbox.messagebird.com/v1/conversations/18c5c32d4762488dbe6ef19623a86302/messages";
+
+
+        $client = new \GuzzleHttp\Client();
+
+        $response = Http::withHeaders([
+            'Authorization' => "AccessKey AH6T3UbqhPur94egxFqKmjsOk",
+            "Accept" => "application/json"
+        ])->get($url);
+
+        $data = $response->json();
+
+        extract($data);
+        extract($items);
+        $arrayLength = count($items);
+        $i = 0;
+        $try = array();
+        $jenis = array();
+        $campuq = array();
+        while ($i < $arrayLength) {
+            extract($items[$i]);
+            $jenis[] = $direction;
+            extract($content);
+            $try[] = $text;
+            // echo "$text\n";
+            $i++;
+        }
+
+        return view('perbualans', [
+            'data' => $data,
+            'try' => $try,
+            'jenis' => $jenis,
+        ]);
     }
 }

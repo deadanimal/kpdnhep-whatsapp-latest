@@ -15,8 +15,8 @@ use App\Http\Controllers\FailController;
 */
 
 Route::get('/', function () {
-    return view('login');
-});
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -51,3 +51,7 @@ Route::get('/laporan_delete/{id}', [LaporanController::class, 'laporan_delete'])
 Route::post('/simpan_muatnaik', [LaporanController::class, 'simpan_muatnaik']);
 
 Route::post('/message', [PerbualanController::class, 'message']);
+
+Route::get('/hantaq', [PerbualanController::class, 'hantaq']);
+
+Route::post('/tingting', [PerbualanController::class, 'tingting']);
