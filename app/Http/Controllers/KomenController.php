@@ -18,7 +18,7 @@ class KomenController extends Controller
         //
         $komens = Komen::all();
 
-        $id = 3;
+        $id = 4;
         $komen_selected = komen::where("id", $id)->first();
 
         return view('komens',[

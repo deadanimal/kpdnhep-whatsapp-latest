@@ -20,7 +20,7 @@ class CreateFailsTable extends Migration
             $table->integer('saiz')->nullable();
             $table->string('pemilik')->nullable();
 
-            $table->foreignId('laporan_id');
+            $table->foreignId('laporan_id')->nullable();
             $table->timestamps();
         });
     }

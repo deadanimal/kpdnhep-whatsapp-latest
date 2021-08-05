@@ -185,13 +185,12 @@
 
                                     <div data-simplebar style="max-height: 300px">
                                         <a href="javascript:void(0);" class="text-body">
-                                        @foreach ($komens as $komen)
+                                            @foreach ($komens as $komen)
                                             <div class="d-flex mt-3 p-1">
-                                                <img src="/images/users/avatar-9.jpg" class="me-2 rounded-circle" height="36" alt="Arya Stark" />
                                                 <div class="w-100">
                                                     <h5 class="mt-0 mb-0">
-                                                        <span class="float-end text-muted font-12">{{$komen->timestamp}}</span>
-                                                        {{$komen->user_id}}
+                                                        <span class="float-end text-muted font-12">{{$komen->created_at}}</span>
+                                                        {{$komen->name}}
                                                     </h5>
                                                     <p class="mt-1 mb-0 text-muted">
                                                         {{$komen->isi}}
@@ -199,8 +198,9 @@
                                                 </div>
                                             </div>
 
-                                            <hr /> 
-                                        @endforeach<!-- end comment-->
+                                            <hr />
+                                            @endforeach
+                                            <!-- end comment-->
                                         </a>
                                     </div>
                                     <!-- end comment -->
@@ -211,10 +211,9 @@
                             </div> <!-- end row -->
 
                             <div class="row mt-2">
-                            <form action="/komen" method="POST"></form>
                                 <div class="col">
                                     <div class="border rounded">
-                                        <form action="#" class="comment-area-box">
+                                        <form action="/komen" method="POST" class="comment-area-box">
                                             <textarea rows="3" class="form-control border-0 resize-none" name="komen" placeholder="Your comment..."></textarea>
                                             <div class="p-2 bg-light">
                                                 <div class="text-end">

@@ -19,12 +19,12 @@ class TugasanController extends Controller
         $tugasans = Tugasan::all();
         $id = 3;
         $tugasan_selected = Tugasan::where("id", $id)->first();
-        $komen = Komen::all();
-
+        $komens = Komen::where("tugasan_id",$id)->first();
+dd($komens);
         return view('tugasans',[
             'tugasans'=>$tugasans,
             'tugasan_selected'=>$tugasan_selected,
-            'komen'=>$komen,
+            'komens'=>$komens,
         ]);
     }
 
@@ -127,10 +127,14 @@ class TugasanController extends Controller
     {
         $tugasans = Tugasan::all();
         $tugasan_selected = Tugasan::where("id", $id)->first();
+        // $komen = Komen::all();
+        // $komen_selected = Komen::where("id", $id)->first();
 
         return view('tugasans',[
             'tugasans'=>$tugasans,
             'tugasan_selected'=>$tugasan_selected,
+            // 'komen'=>$komen,
+            // 'komen_selected'=>$komen_selected,
         ]);
     }
 

@@ -24,6 +24,55 @@
     <div class="row">
 
         <div class="col-xxl-4 col-xl-4 order-xl-1">
+            <div class="d-grid mb-2">
+                <button type="button" class="btn btn-success btn-rounded" data-bs-toggle="modal" data-bs-target="#chat_baru">Start conversation</button>
+                <!-- modal new chat -->
+                <div id="chat_baru" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="standard-modalLabel">New conversation</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form action="/message" method="POST">
+                                @csrf
+                                    <h5>Template:</h5>
+                                    <p>Hi NAME, we received your support ticket #TICKET NUMBER about your ISSUE. You asked us to contact you via WhatsApp. Would you like us to ship the replacement to ADDRESS?</p>
+                                    <div class="mb-3">
+                                        <label for="example-readonly" class="form-label">Phone number</label>
+                                        <input type="text" id="example-readonly" class="form-control" readonly="" value="60122263479">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Name</label>
+                                        <input type="text" id="simpleinput" name="nama" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Ticket number</label>
+                                        <input type="text" id="simpleinput" name="tix" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Issue</label>
+                                        <input type="text" id="simpleinput" name="isu" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="simpleinput" class="form-label">Address</label>
+                                        <input type="text" id="simpleinput" name="alamat" class="form-control">
+                                    </div>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </form>
+                            </div>
+                            <!-- <div class="modal-footer">
+                                    
+                                </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- list chat -->
             <div class="card">
                 <div class="card-body p-0">
                     <ul class="nav nav-tabs nav-bordered">
@@ -446,8 +495,8 @@
             <div class="card">
                 <div class="card-body">
                     <ul class="conversation-list" data-simplebar style="height: 367px">
-                    @foreach ($try as $try)
-                    @if ($jenis == "sent")
+                        @foreach ($try as $try)
+                        @if ($jenis == "sent")
                         <li class="clearfix odd">
                             <div class="conversation-text">
                                 <div class="ctext-wrap">
@@ -467,7 +516,7 @@
                                 </div>
                             </div>
                         </li>
-                    @else
+                        @else
                         <li class="clearfix">
                             <div class="conversation-text">
                                 <div class="ctext-wrap">
@@ -478,8 +527,7 @@
                                 </div>
                             </div>
                             <div class="conversation-actions dropdown">
-                                <button class="btn btn-sm btn-link" data-bs-toggle="dropdown"
-                                        aria-expanded="false"><i class='uil uil-ellipsis-v'></i></button>
+                                <button class="btn btn-sm btn-link" data-bs-toggle="dropdown" aria-expanded="false"><i class='uil uil-ellipsis-v'></i></button>
 
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a class="dropdown-item" href="#">Copy Message</a>
@@ -488,8 +536,8 @@
                                 </div>
                             </div>
                         </li>
-                    @endif
-                    @endforeach
+                        @endif
+                        @endforeach
                     </ul>
 
                     <div class="row">
@@ -497,77 +545,77 @@
                             <div class="mt-2 bg-light p-3 rounded">
                                 <form action="/tingting" method="POST" class="needs-validation" novalidate="" name="chat-form" id="chat-form">
                                     <!-- <form action="/message" method="POST"> -->
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col mb-2 mb-sm-0">
-                                                <input type="text" class="form-control border-0" placeholder="Enter your text" name="testsat">
-                                                <div class="invalid-feedback">
-                                                    Please enter your messsage
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col mb-2 mb-sm-0">
+                                            <input type="text" class="form-control border-0" placeholder="Enter your text" name="testsat">
+                                            <div class="invalid-feedback">
+                                                Please enter your messsage
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-auto">
+                                            <div class="btn-group">
+                                                <a class="btn btn-light" data-bs-toggle="modal" data-bs-target="#hantar-fail"><i class="uil uil-paperclip"></i></a>
+                                                <a href="#" class="btn btn-light"> <i class="uil uil-smile"></i> </a>
+                                                <div class="d-grid">
+                                                    <button type="submit" class="btn btn-success chat-send">
+                                                        <i class="uil uil-message"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-auto">
-                                                <div class="btn-group">
-                                                    <a class="btn btn-light" data-bs-toggle="modal" data-bs-target="#hantar-fail"><i class="uil uil-paperclip"></i></a>
-                                                    <a href="#" class="btn btn-light"> <i class="uil uil-smile"></i> </a>
-                                                    <div class="d-grid">
-                                                        <button type="submit" class="btn btn-success chat-send">
-                                                            <i class="uil uil-message"></i></button>
-                                                    </div>
-                                                </div>
-                                                <div id="hantar-fail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title" id="standard-modalLabel">Send files</h4>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
-                                                                    <div class="fallback">
-                                                                        <input name="file" type="file" multiple />
-                                                                    </div>
+                                            <div id="hantar-fail" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="standard-modalLabel">Send files</h4>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate">
+                                                                <div class="fallback">
+                                                                    <input name="file" type="file" multiple />
+                                                                </div>
 
-                                                                    <div class="dz-message needsclick">
-                                                                        <i class="h1 text-muted dripicons-cloud-upload"></i>
-                                                                        <!-- <h3>Drop files here or click to upload.</h3> -->
-                                                                    </div>
-                                                                </form>
+                                                                <div class="dz-message needsclick">
+                                                                    <i class="h1 text-muted dripicons-cloud-upload"></i>
+                                                                    <!-- <h3>Drop files here or click to upload.</h3> -->
+                                                                </div>
+                                                            </form>
 
-                                                                <!-- Preview -->
-                                                                <div class="dropzone-previews mt-3" id="file-previews"></div>
+                                                            <!-- Preview -->
+                                                            <div class="dropzone-previews mt-3" id="file-previews"></div>
 
-                                                                <!-- file preview template -->
-                                                                <div class="d-none" id="uploadPreviewTemplate">
-                                                                    <div class="card mt-1 mb-0 shadow-none border">
-                                                                        <div class="p-2">
-                                                                            <div class="row align-items-center">
-                                                                                <div class="col-auto">
-                                                                                    <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
-                                                                                </div>
-                                                                                <div class="col ps-0">
-                                                                                    <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
-                                                                                    <p class="mb-0" data-dz-size></p>
-                                                                                </div>
-                                                                                <div class="col-auto">
-                                                                                    <!-- Button -->
-                                                                                    <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                                                                                        <i class="dripicons-cross"></i>
-                                                                                    </a>
-                                                                                </div>
+                                                            <!-- file preview template -->
+                                                            <div class="d-none" id="uploadPreviewTemplate">
+                                                                <div class="card mt-1 mb-0 shadow-none border">
+                                                                    <div class="p-2">
+                                                                        <div class="row align-items-center">
+                                                                            <div class="col-auto">
+                                                                                <img data-dz-thumbnail src="#" class="avatar-sm rounded bg-light" alt="">
+                                                                            </div>
+                                                                            <div class="col ps-0">
+                                                                                <a href="javascript:void(0);" class="text-muted fw-bold" data-dz-name></a>
+                                                                                <p class="mb-0" data-dz-size></p>
+                                                                            </div>
+                                                                            <div class="col-auto">
+                                                                                <!-- Button -->
+                                                                                <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
+                                                                                    <i class="dripicons-cross"></i>
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Send</button>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Send</button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
                                             </div>
                                         </div>
+                                    </div>
                                     <!-- </form> -->
                                 </form>
                             </div>
@@ -579,7 +627,7 @@
         </div>
 
     </div>
-<!-- 
+    <!-- 
     <form method="POST" action="/message">
         @csrf
         <div class="mb-3">

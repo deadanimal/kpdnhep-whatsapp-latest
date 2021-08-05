@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Komen extends Model
 {
-    use HasFactory;
+    public function tugasan()
+    {
+        return $this->belongsTo(Tugasan::class, 'foreign_key');
+    }
 }

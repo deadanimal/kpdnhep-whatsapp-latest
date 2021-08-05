@@ -20,7 +20,7 @@ class PerbualanController extends Controller
         //
         $perbualans = Perbualan::all();
 
-        $url = "https://whatsapp-sandbox.messagebird.com/v1/conversations/18c5c32d4762488dbe6ef19623a86302/messages";
+        $url = "https://whatsapp-sandbox.messagebird.com/v1/conversations/29e5f1ff945e47c4b87b824a06bc7625/messages";
 
 
         $client = new \GuzzleHttp\Client();
@@ -31,9 +31,10 @@ class PerbualanController extends Controller
         ])->get($url);
 
         $data = $response->json();
-
+        // dd($data);
         extract($data);
         extract($items);
+
         $arrayLength = count($items);
         $i = 0;
         $try = array();
@@ -47,12 +48,6 @@ class PerbualanController extends Controller
             // echo "$text\n";
             $i++;
         }
-
-        // print_r($try);
-        // extract($items[0]);
-        // extract($content);
-        // echo "$text";
-        // dd($data);
 
         return view('perbualans', [
             'perbualans' => $perbualans,
@@ -132,25 +127,21 @@ class PerbualanController extends Controller
     }
 
     // whatsapp api
-    public function message(Request $request)
-    {
+    public function message(Request $request){
 
+        $nama=$request->nama;
+        $tix=$request->tix;
+        $isu=$request->isu;
+        $alamat=$request->alamat;
 
-        // send message
-
-        // $url = "https://conversations.messagebird.com/v1/conversations/06fe881cbcee432c89a2c7c5e1f05d71/messages";
-
-        // $data_sent = [
-        //     "type" =>  "text",
-        //     "content" => [
-        //         "text" => "Najhan hensem"
-        //     ]];
         $params = [
-            "najhan",
-            "123",
-            "new text message",
-            "alamat rumah"
+            $nama,
+            $tix,
+            $isu,
+            $alamat
         ];
+
+        // dd($params);
         $array = [];
         foreach ($params as $key => $value) {
             array_push($array, (object) ['default' => $value]);
@@ -194,47 +185,16 @@ class PerbualanController extends Controller
         return view('perbualans');
     }
 
-    public function hantaq(Request $request)
+    public function tingting(Request $request)
     {
-        $testsat = $request->testsat;
-        $url = "https://conversations.messagebird.com/v1/conversations/2e15efafec384e1c82e9842075e87beb/messages";
-        $data = [
-            "type" => "text",
-            "content" => [
-                "text" => $testsat,
-            ]
-        ];
-
-        $data = json_encode($data);
-        // dd($data);
-
-        $headers = ["Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", "Accept" => "application/json"];
-
-        $response = Http::withHeaders([
-            "Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", 
-            "Accept" => "application/json"
-        ])->post($url, [
-            "type" => "text",
-            "content" => [
-                "text" => 'lol',
-            ]
-        ]);#$client->request('POST', $url, array('headers' => $headers, 'body' => $data));
-        
-        // dd($response);
-        $data = $response->getBody();
-
-        return view('perbualans');
-    }
-
-    public function tingting(Request $request){
         $url = "https://conversations.messagebird.com/v1/send";
         $testsat = $request->testsat;
         $response = Http::withHeaders([
-            "Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk", 
+            "Authorization" => "AccessKey AH6T3UbqhPur94egxFqKmjsOk",
             "Accept" => "application/json"
         ])->post($url, [
-            "to"=>"+60122263479", 
-            "from"=>"fe33252e89774ebbafa6409b5c3a4c9e",
+            "to" => "+60122263479",
+            "from" => "fe33252e89774ebbafa6409b5c3a4c9e",
             "type" => "text",
             "content" => [
                 "text" => $testsat,
@@ -243,10 +203,7 @@ class PerbualanController extends Controller
         $data = $response->json();
         // dd($data);
 
-        $url = "https://whatsapp-sandbox.messagebird.com/v1/conversations/18c5c32d4762488dbe6ef19623a86302/messages";
-
-
-        $client = new \GuzzleHttp\Client();
+        $url = "https://whatsapp-sandbox.messagebird.com/v1/conversations/29e5f1ff945e47c4b87b824a06bc7625/messages";
 
         $response = Http::withHeaders([
             'Authorization' => "AccessKey AH6T3UbqhPur94egxFqKmjsOk",
@@ -256,12 +213,12 @@ class PerbualanController extends Controller
         $data = $response->json();
 
         extract($data);
+        // dd($data);
         extract($items);
         $arrayLength = count($items);
         $i = 0;
         $try = array();
         $jenis = array();
-        $campuq = array();
         while ($i < $arrayLength) {
             extract($items[$i]);
             $jenis[] = $direction;
