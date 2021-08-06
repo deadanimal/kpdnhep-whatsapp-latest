@@ -182,7 +182,7 @@ class PerbualanController extends Controller
 
         $data = $response->getBody();
 
-        return view('perbualans');
+        return redirect('perbualans');
     }
 
     public function tingting(Request $request)
@@ -228,10 +228,6 @@ class PerbualanController extends Controller
             $i++;
         }
 
-        return view('perbualans', [
-            'data' => $data,
-            'try' => $try,
-            'jenis' => $jenis,
-        ]);
+        return redirect('perbualans');
     }
 }

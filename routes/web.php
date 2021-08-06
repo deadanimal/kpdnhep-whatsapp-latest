@@ -28,7 +28,10 @@ use App\Http\Controllers\PerbualanController;
 Route::resource('perbualans', PerbualanController::class);
 
 use App\Http\Controllers\TugasanController;
-Route::resource('tugasans', TugasanController::class); 
+Route::resource('tugasans', TugasanController::class);
+
+use App\Http\Controllers\SenaraitugasController;
+Route::resource('senaraitugas', SenaraitugasController::class); 
 
 use App\Http\Controllers\LaporanController;
 Route::resource('laporans', LaporanController::class); 
@@ -41,6 +44,8 @@ Route::resource('fails', FailController::class);
 
 // custom action
 Route::get('/tugasan_delete/{id}', [TugasanController::class, 'tugasan_delete']);
+
+Route::get('/delete_list/{id}', [SenaraitugasController::class, 'delete_list']);
 
 Route::get('/hantar/{id}', [TugasanController::class, 'hantar']);
 
@@ -55,3 +60,5 @@ Route::post('/message', [PerbualanController::class, 'message']);
 Route::get('/hantaq', [PerbualanController::class, 'hantaq']);
 
 Route::post('/tingting', [PerbualanController::class, 'tingting']);
+
+Route::get('/terimakerja/{id}', [SenaraitugasController::class, 'terimakerja']);

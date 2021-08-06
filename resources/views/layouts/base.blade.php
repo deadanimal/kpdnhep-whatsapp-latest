@@ -109,11 +109,29 @@
                         </a>
                     </li>
 
-                    <li class="side-nav-item">
+                    <!-- <li class="side-nav-item">
                         <a href="/tugasans" class="side-nav-link">
                             <i class="uil-clipboard-alt"></i>
                             <span> Tasks </span>
                         </a>
+                    </li> -->
+
+                    <li class="side-nav-item">
+                        <a data-bs-toggle="collapse" href="#sidebarTask" aria-expanded="false" aria-controls="sidebarTask" class="side-nav-link">
+                            <i class="uil-clipboard-alt"></i>
+                            <span> Task </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarTask">
+                            <ul class="side-nav-second-level">
+                                <li>
+                                    <a href="/senaraitugas">List of task</a>
+                                </li>
+                                <li>
+                                    <a href="/tugasans">My task</a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
 
                     <li class="side-nav-item">

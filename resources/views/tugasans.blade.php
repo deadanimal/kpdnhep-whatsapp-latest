@@ -27,7 +27,10 @@
                         </form>
                     </div>
                 </div>
-                <h4 class="page-title">Tasks <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg">Add New</button></h4>
+                <h4 class="page-title">
+                    My Tasks
+                    <!-- <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#bs-example-modal-lg">Add New</button> -->
+                </h4>
             </div>
             <!-- end page title -->
 
@@ -46,8 +49,6 @@
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Assignee</th>
-                                    <th>Tasks</th>
                                     <th>Due date</th>
                                     <th>Level</th>
                                     <th>Status</th>
@@ -60,8 +61,6 @@
                                 @foreach ($tugasans as $tugasan)
                                 <tr>
                                     <td>{{$tugasan->tajuk}}</td>
-                                    <td>{{$tugasan->petugas}}</td>
-                                    <td>{{$tugasan->kerja}}</td>
                                     <td>{{$tugasan->tarikh}}</td>
                                     <td>{{$tugasan->tahap}}</td>
                                     <td>
@@ -78,6 +77,45 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <table id="selection-datatable" class="table dt-responsive nowrap w-100">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Assignee</th>
+                                    <th>Tasks</th>
+                                    <th>Due date</th>
+                                    <th>Level</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>{{$senaraitugas->tajuk}}</td>
+                                    <td>{{$senaraitugas->petugas}}</td>
+                                    <td>{{$senaraitugas->kerja}}</td>
+                                    <td>{{$senaraitugas->tarikh}}</td>
+                                    <td>{{$senaraitugas->tahap}}</td>
+                                    <td>
+                                        @if ($senaraitugas->status == "Done")
+                                        <span class="badge bg-success">Done</span>
+                                        @else
+                                        <span class="badge bg-danger">Underdone</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="/delete_list/{{$senaraitugas->id}}" class="action-icon text-danger"> <i class="mdi mdi-delete"></i></a>
+                                        <a href="/terimakerja/{{$senaraitugas->id}}" class="action-icon text-success"> <i class="mdi mdi-check-circle"></i></a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -177,152 +215,13 @@
                                 </div> <!-- end col -->
                             </div>
                             <!-- end task description -->
-
-                            <!-- comments -->
-                            <div class="row mt-3">
-                                <div class="col">
-                                    <h5 class="mb-2 font-16">Comments</h5>
-
-                                    <div data-simplebar style="max-height: 300px">
-                                        <a href="javascript:void(0);" class="text-body">
-                                            @foreach ($komens as $komen)
-                                            <div class="d-flex mt-3 p-1">
-                                                <div class="w-100">
-                                                    <h5 class="mt-0 mb-0">
-                                                        <span class="float-end text-muted font-12">{{$komen->created_at}}</span>
-                                                        {{$komen->name}}
-                                                    </h5>
-                                                    <p class="mt-1 mb-0 text-muted">
-                                                        {{$komen->isi}}
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <hr />
-                                            @endforeach
-                                            <!-- end comment-->
-                                        </a>
-                                    </div>
-                                    <!-- end comment -->
-
-
-
-                                </div> <!-- end col -->
-                            </div> <!-- end row -->
-
-                            <div class="row mt-2">
-                                <div class="col">
-                                    <div class="border rounded">
-                                        <form action="/komen" method="POST" class="comment-area-box">
-                                            <textarea rows="3" class="form-control border-0 resize-none" name="komen" placeholder="Your comment..."></textarea>
-                                            <div class="p-2 bg-light">
-                                                <div class="text-end">
-                                                    <button type="submit" class="btn btn-sm btn-success"><i class='uil uil-message me-1'></i>Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> <!-- end .border-->
-                                </div> <!-- end col-->
-                            </div> <!-- end row-->
-                            <!-- end comments -->
                         </div> <!-- end col -->
                     </div> <!-- end row-->
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
-        </div> <!-- end col -->
+        </div> 
+        <!-- end col -->
     </div>
     <!-- end row-->
-
-    <div class="tab-content">
-        <div class="tab-pane show active" id="bs-modals-preview">
-            <div class="modal fade" id="bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="myLargeModalLabel">New Task</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="/tugasans" class="my-3 mx-3">
-                                @csrf
-                                <!-- 1st row -->
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="tajuk" class="form-label">Title</label>
-                                            <input type="text" name="tajuk" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="petugas" class="form-label">Assigned to</label>
-                                            <select class="form-select" name="petugas">
-                                                <option value="Najhan">Najhan</option>
-                                                <option value="Israa">Israa</option>
-                                                <option value="Afiq">Afiq</option>
-                                                <option value="Wani">Wani</option>
-                                                <option value="Mael">Mael</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 2nd -->
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="kerja" class="form-label">Task description</label>
-                                            <textarea class="form-control" name="kerja" rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="tarikh" class="form-label">Date</label>
-                                            <input class="form-control" name="tarikh" type="date" name="tarikh">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 3rd -->
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="tahap" class="form-label">Level</label>
-                                            <div class="mt-2">
-                                                <div class="form-check form-check-inline">
-                                                    <input type="radio" id="tinggi" name="tahap" class="form-check-input" value="High">
-                                                    <label class="form-check-label" for="tinggi">High</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input type="radio" id="biasa" name="tahap" class="form-check-input" value="Medium">
-                                                    <label class="form-check-label" for="biasa">Medium</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input type="radio" id="rendah" name="tahap" class="form-check-input" value="Low">
-                                                    <label class="form-check-label" for="rendah">Low</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="row d-flex justify-content-end">
-                                    <div class="col-auto">
-                                        <button type="submit" class="btn btn-success">Save</button>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">close</button>
-                                    </div>
-                                </div>
-
-                            </form>
-
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-        </div>
-    </div>
 </div>
 @stop

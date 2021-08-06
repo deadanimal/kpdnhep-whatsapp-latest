@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tugasan;
-use App\Models\Komen;
+use App\Models\Senaraitugas;
 use Illuminate\Http\Request;
 
 class TugasanController extends Controller
@@ -13,18 +13,22 @@ class TugasanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+
+        $user = $request->user();
+        $petugas_id = $user->id;
+        $senaraitugas = Senaraitugas::where("petugas_id", $petugas_id)->first();
+        // dd($senaraitugas);
         $tugasans = Tugasan::all();
-        $id = 3;
+        $id = 1;
         $tugasan_selected = Tugasan::where("id", $id)->first();
-        $komens = Komen::where("tugasan_id",$id)->first();
-dd($komens);
+
         return view('tugasans',[
             'tugasans'=>$tugasans,
             'tugasan_selected'=>$tugasan_selected,
-            'komens'=>$komens,
+            'senaraitugas'=>$senaraitugas
         ]);
     }
 
